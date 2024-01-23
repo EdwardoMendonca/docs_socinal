@@ -1,4 +1,6 @@
-from interga_dev import app
+from interga_dev import create_app
+
+app = create_app()
 
 # Inicia a aplicação ------------------------------
 if __name__ == '__main__':

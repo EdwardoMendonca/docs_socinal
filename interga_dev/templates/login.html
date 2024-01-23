@@ -31,29 +31,43 @@
 <body>
   <main class="ui middle aligned center aligned grid">
     <div class="column">
+      
       <form class="ui large form" data-np-intersection-state="visible" data-np-autofill-form-type="login" data-np-checked="1" data-np-watching="1">
-        <div class="ui stacked segment">
-          <div class="ui medium image mb10">
-            <img src="{{ url_for('static', filename='img/logo-h.png') }}">
-          </div>
-          <div class="field">
-            <div class="ui left icon input">
-              <i class="user icon"></i>
-              <input type="text" name="email" placeholder="E-mail address" data-np-intersection-state="observed" data-np-autofill-field-type="username" data-np-uid="a3ab6c5e-02a2-41da-876b-7248bc6b2961">
+        <div class="ui grid stacked segment">
+          <div class="sixteen wide column">
+            <div class="ui medium image">
+              <img src="{{ url_for('static', filename='img/logo-h.png') }}">
             </div>
           </div>
-          <div class="field">
-            <div class="ui left icon input">
-              <i class="lock icon"></i>
-              <input type="password" name="password" placeholder="Password" data-np-intersection-state="observed" data-np-autofill-field-type="password" data-np-uid="62cecb23-82ee-4fb2-84d1-3e25dfab4a94">
+          <div class="sixteen wide column">
+            <div class="field">
+              <div class="ui left icon input">
+                <i class="user icon"></i>
+                <input type="text" name="email" placeholder="Login">
+              </div>
+            </div>
+            <div class="field">
+              <div class="ui left icon input">
+                <i class="lock icon"></i>
+                <input type="password" name="password" placeholder="Senha">
+              </div>
+            </div>
+            <div class="field">
+              <div class="ui fluid large orange submit button">Entrar</div>
+            </div>
+            <div class="field">
+              <a class="ui fluid large basic submit button">
+                <img class="ui avatar image" src="{{ url_for('static', filename='img/g-google.png') }}">
+                <span>Continuar com Google</span>
+              </a>
             </div>
           </div>
-          <div class="ui fluid large orange submit button">Entrar</div>
+
         </div>
-  
+        
         <div class="ui error message"></div>
       </form>
-  
+      
       <div class="ui left labeled button" tabindex="0">
         <a class="ui right pointing label">
           Novo por aqui?
