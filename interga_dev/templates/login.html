@@ -1,88 +1,69 @@
-<!DOCTYPE html>
-<html lang="pt-BR" dir="ltr">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Acesso Exclusivo Kmd Tecnologia">
-  <meta name="author" content="Kmd Tecnologia">
-  <meta name="robots" content="noindex, nofollow">
-  <title>Socinal - Login</title>
-  <!-- Links para Favicon -->
-  <link rel="apple-touch-icon" href="{{ url_for('static', filename='img/logo.png') }}">
-  <link rel="shortcut icon" href="{{ url_for('static', filename='img/logo.png') }}">
-  <!-- Links da Bibliotecas CSS -->
-  <link rel="stylesheet" href="{{ url_for('static', filename='semantic/semantic.min.css') }}">
-  <link rel="stylesheet" href="{{ url_for('static', filename='libraries/fontawesome/css/all.min.css') }}">
-  <!-- Links dos arquivos CSS Customizados -->
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/template.css') }}">
+{% extends 'base.html' %}
 
-  <style type="text/css">
-    body {
-      background-color: #ededed;
-    }
-    body > .grid {
-      height: 100%;
-    }
-    .column {
-      max-width: 400px;
-    }
-  </style>
-</head>
-<body>
-  <main class="ui middle aligned center aligned grid">
-    <div class="column">
-      
-      <form class="ui large form" data-np-intersection-state="visible" data-np-autofill-form-type="login" data-np-checked="1" data-np-watching="1">
-        <div class="ui grid stacked segment">
-          <div class="sixteen wide column">
-            <div class="ui medium image">
-              <img src="{{ url_for('static', filename='img/logo-h.png') }}">
-            </div>
-          </div>
-          <div class="sixteen wide column">
-            <div class="field">
-              <div class="ui left icon input">
-                <i class="user icon"></i>
-                <input type="text" name="email" placeholder="Login">
-              </div>
-            </div>
-            <div class="field">
-              <div class="ui left icon input">
-                <i class="lock icon"></i>
-                <input type="password" name="password" placeholder="Senha">
-              </div>
-            </div>
-            <div class="field">
-              <div class="ui fluid large orange submit button">Entrar</div>
-            </div>
-            <div class="field">
-              <a class="ui fluid large basic submit button">
-                <img class="ui avatar image" src="{{ url_for('static', filename='img/g-google.png') }}">
-                <span>Continuar com Google</span>
-              </a>
-            </div>
-          </div>
+{% block title %}
+  Login - Socinal APIs Docs
+{% endblock %}
 
+{% block header %}
+  {% include 'usuarios/menu.html' %}
+{% endblock %}
+
+{% block main %}
+<div class="container center">
+  <div class="card w-18r bg-transparent-0">
+    <div class="card-body bg-transparent-035">
+      <p class="card-title text-center">
+        <img class="mb-3" src="{{ url_for('static', filename='img/logo.png') }}" alt="Logo"><br>
+        <span class="h4 ff-myriadpro-bold">Tarefas Alerta!</span>
+      </p>
+      <form action="{{ url_for('index') }}" method="POST" id="form_login">
+        {{ login_form.hidden_tag() }}
+        {{ login_form.next() }}
+        <div class="row mb-3">
+          <div class="col">
+            {{ login_form.login.label(class='fw-bold') }}
+            {% if login_form.login.errors %}
+              {{ login_form.login(class='form-control is-invalid', placeholder="Informe seu login") }}
+              <div class="invalid-feedback">
+                {% for error in login_form.login.errors %}
+                  {{ error }}
+                {% endfor %}
+              </div>
+            {% else %}
+              {{ login_form.login(class='form-control', placeholder="Informe seu login") }}
+            {% endif %}
+          </div>
         </div>
-        
-        <div class="ui error message"></div>
+        <div class="row mb-2">
+          <div class="col">
+            {{ login_form.senha.label(class='fw-bold') }}
+            {% if login_form.senha.errors %}
+              {{ login_form.senha(class='form-control is-invalid', placeholder="Digite sua senha") }}
+              <div class="invalid-feedback">
+                {% for error in login_form.senha.errors %}
+                  {{ error }}
+                {% endfor %}
+              </div>
+            {% else %}
+              {{ login_form.senha(class='form-control', placeholder="Digite sua senha") }}
+            {% endif %}
+          </div>
+        </div>
+        <div class="row mb-4">
+          <div class="col text-center">
+            {{ login_form.lembrar_dados(class='form-check-input') }}
+            {{ login_form.lembrar_dados.label(class='form-check-label') }}
+          </div>
+        </div>
+        <div class="row">
+          <div class="col text-center">
+          <div class="d-grid gap-2">
+            <button type="submit" class="btn btn-primary" id="entrar">Entrar</button>
+          </div>
+          </div>
+        </div>
       </form>
-      
-      <div class="ui left labeled button" tabindex="0">
-        <a class="ui right pointing label">
-          Novo por aqui?
-        </a>
-        <div class="ui basic button">
-          Criar Conta
-        </div>
-      </div>
     </div>
-  </main>
-
-  <!-- Adicione o link para o Bibliotecas JS -->
-  <script src="{{ url_for('static', filename='jquery/jquery-3.7.1.min.js') }}"></script>
-  <script src="{{ url_for('static', filename='semantic/semantic.min.js') }}"></script>
-  <!-- Links dos arquivos JS Customizados -->
-  <script src="{{ url_for('static', filename='js/template.js') }}"></script>
-</body>
-</html>
+  </div>
+</div>
+{% endblock %}
